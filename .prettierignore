@@ -1,0 +1,6 @@
+node_modules/
+assets/
+**/*.md
+bun.lock
+marketplace.json
+schema/permissions.json

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "name": "sobes-community",
+  "displayName": { "ru": "Плагины Sobes", "en": "Sobes plugins" },
+  "categories": [
+    { "id": "productivity", "title": { "ru": "Продуктивность", "en": "Productivity" } },
+    { "id": "meetings", "title": { "ru": "Встречи", "en": "Meetings" } },
+    { "id": "notes", "title": { "ru": "Заметки", "en": "Notes" } }
+  ]
+}

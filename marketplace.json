@@ -1,0 +1,118 @@
+{
+  "schemaVersion": 1,
+  "name": "sobes-community",
+  "displayName": {
+    "ru": "Плагины Sobes",
+    "en": "Sobes plugins"
+  },
+  "categories": [
+    {
+      "id": "productivity",
+      "title": {
+        "ru": "Продуктивность",
+        "en": "Productivity"
+      }
+    },
+    {
+      "id": "meetings",
+      "title": {
+        "ru": "Встречи",
+        "en": "Meetings"
+      }
+    },
+    {
+      "id": "notes",
+      "title": {
+        "ru": "Заметки",
+        "en": "Notes"
+      }
+    }
+  ],
+  "plugins": [
+    {
+      "id": "sobes.system-design-calculator",
+      "publisher": "Sobes Tech",
+      "category": "productivity",
+      "keywords": [
+        "system design",
+        "architecture",
+        "rps",
+        "bandwidth",
+        "storage",
+        "cache",
+        "нагрузка",
+        "хранение",
+        "кеш"
+      ],
+      "updatedAt": "2026-11-01",
+      "changelog": {
+        "en": "Initial release.",
+        "ru": "Первый выпуск."
+      },
+      "overview": {
+        "en": "# System Design Calculator\n\nEstimate a system while discussing it in an interview. The calculator opens from a button in the meeting overlay toolbar into a resizable panel, alongside the conversation, System Design and notes. In a narrow window, the panel sits above the conversation.\n\n## What it calculates\n\n- **RPS:** average and peak request rates from daily active users, requests per user and a peak multiplier.\n- **Network:** peak ingress and egress bandwidth, plus daily outbound data.\n- **Storage:** daily new records, logical retained data and capacity including copies and overhead.\n- **Cache:** RAM per copy and in total, plus read/write load reaching the origin after cache hits.\n\nThe compact form shares the meeting panel background. The RPS, Network, Storage and Cache tabs sit in the panel header. Results update as you type. Empty, invalid or overflowing inputs are marked rather than silently becoming zero. **Reset** restores the defaults.\n\nPayloads use KiB (1024 bytes), bandwidth uses Mbit/s (1,000,000 bits per second). Copy counts include the primary. Storage assumes every write creates a new retained record; cache hits reduce reads only. Formulas and other assumptions are available inside the panel. This is an arithmetic estimate, not a hardware benchmark.\n\n## Open and use\n\nInstall the plugin, open a meeting, and choose **Calculator** in the overlay toolbar. Its control can be moved or enabled in the Meeting Panel editor. English and Russian interfaces are included.\n\nThe plugin requests only overlay rendering. It does not access the clipboard, read interviews, call models, make network requests or save data. Closing and reopening the panel keeps its inputs during the same meeting. A new meeting, disabling or updating the plugin, or restarting the app resets them.",
+        "ru": "# Калькулятор system design\n\nПрикидывайте параметры системы прямо во время обсуждения на собеседовании. Калькулятор открывается кнопкой в оверлее в панель с изменяемым размером рядом с разговором, System Design и заметками. В узком окне панель располагается сверху.\n\n## Что считает\n\n- **RPS:** среднюю и пиковую нагрузку по числу активных пользователей, запросам на человека и множителю пика.\n- **Сеть:** пиковый входящий и исходящий трафик, исходящий объём за сутки.\n- **Данные:** новые записи за сутки, логический объём хранения и место с учётом копий и накладных расходов.\n- **Кеш:** RAM одной копии и всего кеша, чтения и записи, которые доходят до источника после попаданий в кеш.\n\nКомпактная форма использует фон панели встречи. Вкладки RPS, «Сеть», «Данные» и «Кеш» находятся в шапке панели. Результаты обновляются при вводе. Пустые, некорректные и слишком большие значения отмечаются ошибкой, а не превращаются в ноль. **Сбросить** возвращает значения по умолчанию.\n\nРазмеры запросов и объектов задаются в КиБ (1024 байта), трафик — в Мбит/с (1 000 000 бит/с). Число копий включает основную. При расчёте хранения каждая запись добавляет новое сохраняемое событие; попадания в кеш уменьшают только чтения. Формулы и допущения доступны внутри панели. Это арифметическая оценка, а не результат нагрузочного теста.\n\n## Как открыть\n\nУстановите плагин, откройте встречу и нажмите **Калькулятор** в панели оверлея. Кнопку можно переместить или включить в редакторе панели встречи. Есть русский и английский интерфейсы.\n\nПлагин запрашивает только отображение в оверлее. Он не обращается к буферу обмена, не читает встречи, не вызывает модели, не обращается к сети и не сохраняет данные. Закрытие и повторное открытие панели сохраняет параметры в пределах встречи. Новая встреча, отключение или обновление плагина и перезапуск приложения сбрасывают их."
+      },
+      "manifest": {
+        "id": "sobes.system-design-calculator",
+        "version": "1.0.5",
+        "apiVersion": 1,
+        "name": {
+          "en": "System Design Calculator",
+          "ru": "Калькулятор system design"
+        },
+        "description": {
+          "en": "Estimate request rates, bandwidth, storage and cache size in the meeting overlay.",
+          "ru": "Оценивайте RPS, трафик, хранение и размер кеша прямо в оверлее встречи."
+        },
+        "permissions": [
+          "overlay.render"
+        ],
+        "commands": [],
+        "views": [
+          {
+            "id": "calculator",
+            "title": {
+              "en": "Calculator",
+              "ru": "Калькулятор"
+            },
+            "slot": "overlay.workspace",
+            "renderer": "react",
+            "icon": "chart"
+          }
+        ]
+      },
+      "sha256": "414e81a2b993e6ebf25cb4e33f83b9b8a5f5dc57e2afaece5c50859bc782a5a2",
+      "source": {
+        "type": "github",
+        "repository": "sobes-tech/plugin-sdk",
+        "revision": "38b25d516b98dc8e39182cafd45c4774336309ca",
+        "path": "plugins/bundles/system-design-calculator.json"
+      },
+      "repository": "https://github.com/sobes-tech/plugin-sdk/tree/38b25d516b98dc8e39182cafd45c4774336309ca/plugins/system-design-calculator",
+      "screenshots": [
+        {
+          "url": "https://raw.githubusercontent.com/sobes-tech/plugin-marketplace/main/assets/system-design-calculator-rps.png",
+          "caption": {
+            "en": "RPS inputs and results, with tabs in the panel header.",
+            "ru": "Параметры и результаты RPS, вкладки в шапке панели."
+          }
+        },
+        {
+          "url": "https://raw.githubusercontent.com/sobes-tech/plugin-marketplace/main/assets/system-design-calculator-storage.png",
+          "caption": {
+            "en": "Compact retained-data estimates with copies and overhead.",
+            "ru": "Компактный расчёт хранения с учётом копий и запаса."
+          }
+        },
+        {
+          "url": "https://raw.githubusercontent.com/sobes-tech/plugin-marketplace/main/assets/system-design-calculator-cache.png",
+          "caption": {
+            "en": "Cache memory and origin load in a compact light panel.",
+            "ru": "Память кеша и нагрузка на источник в компактной светлой панели."
+          }
+        }
+      ]
+    }
+  ]
+}

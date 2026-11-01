@@ -1,0 +1,23 @@
+{
+  "name": "sobes-plugin-marketplace",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "format": "prettier . --write && eslint . --fix && prettier . --write",
+    "format:check": "prettier . --check",
+    "lint": "eslint . --max-warnings 0",
+    "build": "bun scripts/build.ts",
+    "check": "bun scripts/build.ts --check",
+    "check:remote": "bun scripts/build.ts --check --remote",
+    "test": "bun test --isolate tests"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@stylistic/eslint-plugin": "5.10.0",
+    "@types/bun": "^1.3.14",
+    "@typescript-eslint/parser": "8.72.1",
+    "eslint": "10.14.0",
+    "prettier": "3.9.10",
+    "typescript": "5.8.3"
+  }
+}
