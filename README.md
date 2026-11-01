@@ -2,6 +2,8 @@
 
 A reviewed catalog for Sobes desktop plugins. This repository stores metadata; executable packages stay in their authors' GitHub repositories or release assets. The desktop reads the generated [marketplace.json](marketplace.json).
 
+Submissions and updates follow [PUBLISHING_POLICY.md](PUBLISHING_POLICY.md), including source, publisher, license, dependency, and data-access review. Report suspected malicious behavior or vulnerabilities through [SECURITY.md](SECURITY.md). Automated validation and checksums do not certify a package as malware-free; custom catalogs and local files do not receive this catalog's maintainer review.
+
 The initial release uses **plugin API 1**. Package versions follow semantic versioning independently of the API version. The catalog contains installable tools; SDK demonstrations remain in the SDK repository. Check the installed host's capabilities for available methods and features.
 
 Start with the SDK [getting started guide](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/getting-started.md), [API reference](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/api.md), [UI slots](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/ui-slots.md), and [runtime guide](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/runtime-and-build.md). Resource grants, CRUD and live event streams are described in the [platform API](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/platform/README.md). For model integrations, see [plugin-configured HTTP requests](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/model-requests.md). The full documentation is available in [English](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/en/README.md) and [Russian](https://github.com/sobes-tech/plugin-sdk/blob/main/docs/ru/README.md).
@@ -145,6 +147,8 @@ Run `bun run check:remote` after the source commit or release asset is publicly 
 ## Review, installation, and updates
 
 Submit the entry and regenerated index in one pull request. Review includes executable code, requested permissions and domains, publisher/source changes, descriptions, and screenshots. Do not put secrets or account tokens in a package or entry. A checksum detects changed bytes; it does not establish that the code or publisher is trustworthy.
+
+Complete the [submission checklist](.github/pull_request_template.md) and provide the applicable licenses and dependency notices. A maintainer's independent approval must cover the submitted revision and package hash. Follow [SECURITY.md](SECURITY.md) when a released package is reported as malicious or compromised; delisting alone does not disable installed copies.
 
 Refreshing a catalog updates metadata only. The user explicitly installs a package after reviewing its manifest and requested access. The desktop verifies the complete package checksum, matching manifest, supported API/features, and permissions before installation. Dependencies and build scripts are not downloaded or run on the user's machine.
 

@@ -216,3 +216,27 @@ it("still verifies the exact package checksum and manifest", () => {
     "Manifest mismatch",
   );
 });
+
+it("rejects malformed executable payloads without executing submitted code", () => {
+  const pack = (fields: Record<string, unknown>) =>
+    Buffer.from(JSON.stringify({ manifest: fixture.manifest, source: "void 0", ...fields }));
+
+  for (const fields of [
+    { source: 42 },
+    { source: "function {" },
+    { ui: { javascript: "const =" } },
+    { binary: "executable" },
+  ]) {
+    const bytes = pack(fields);
+
+    expect(() => validatePackageBytes(bytes, entryFor(bytes))).toThrow();
+  }
+
+  const bytes = pack({
+    source:
+      "globalThis.__marketplaceValidationExecuted = true; throw new Error('must not execute');",
+  });
+
+  expect(() => validatePackageBytes(bytes, entryFor(bytes))).not.toThrow();
+  expect(Reflect.has(globalThis, "__marketplaceValidationExecuted")).toBe(false);
+});
