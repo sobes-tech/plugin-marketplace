@@ -9,6 +9,7 @@
     "build": "bun scripts/build.ts",
     "check": "bun scripts/build.ts --check",
     "check:remote": "bun scripts/build.ts --check --remote",
+    "check:updates": "bun scripts/check-updates.ts",
     "test": "bun test --isolate tests"
   },
   "devDependencies": {
@@ -18,6 +19,7 @@
     "@typescript-eslint/parser": "8.72.1",
     "eslint": "10.14.0",
     "prettier": "3.9.10",
+    "semver": "7.8.5",
     "typescript": "5.8.3"
   }
 }

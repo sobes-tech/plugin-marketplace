@@ -15,8 +15,8 @@
   ],
   "updatedAt": "2026-11-01",
   "changelog": {
-    "en": "Initial release.",
-    "ru": "Первый выпуск."
+    "ru": "Обновлён SDK плагина, добавлены лицензионные уведомления зависимостей в пакет.",
+    "en": "Updated the plugin SDK and included dependency license notices in the package."
   },
   "overview": {
     "en": "# System Design Calculator\n\nEstimate a system while discussing it in an interview. The calculator opens from a button in the meeting overlay toolbar into a resizable panel, alongside the conversation, System Design and notes. In a narrow window, the panel sits above the conversation.\n\n## What it calculates\n\n- **RPS:** average and peak request rates from daily active users, requests per user and a peak multiplier.\n- **Network:** peak ingress and egress bandwidth, plus daily outbound data.\n- **Storage:** daily new records, logical retained data and capacity including copies and overhead.\n- **Cache:** RAM per copy and in total, plus read/write load reaching the origin after cache hits.\n\nThe compact form shares the meeting panel background. The RPS, Network, Storage and Cache tabs sit in the panel header. Results update as you type. Empty, invalid or overflowing inputs are marked rather than silently becoming zero. **Reset** restores the defaults.\n\nPayloads use KiB (1024 bytes), bandwidth uses Mbit/s (1,000,000 bits per second). Copy counts include the primary. Storage assumes every write creates a new retained record; cache hits reduce reads only. Formulas and other assumptions are available inside the panel. This is an arithmetic estimate, not a hardware benchmark.\n\n## Open and use\n\nInstall the plugin, open a meeting, and choose **Calculator** in the overlay toolbar. Its control can be moved or enabled in the Meeting Panel editor. English and Russian interfaces are included.\n\nThe plugin requests only overlay rendering. It does not access the clipboard, read interviews, call models, make network requests or save data. Closing and reopening the panel keeps its inputs during the same meeting. A new meeting, disabling or updating the plugin, or restarting the app resets them.",
@@ -24,7 +24,7 @@
   },
   "manifest": {
     "id": "sobes.system-design-calculator",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "apiVersion": 1,
     "name": {
       "en": "System Design Calculator",
@@ -49,11 +49,11 @@
       }
     ]
   },
-  "sha256": "414e81a2b993e6ebf25cb4e33f83b9b8a5f5dc57e2afaece5c50859bc782a5a2",
+  "sha256": "bd1bd28b260518f4715c9508f0d482a816fa537b9cdefa68f726078f84581feb",
   "source": {
     "type": "github",
     "repository": "sobes-tech/plugin-sdk",
-    "revision": "38b25d516b98dc8e39182cafd45c4774336309ca",
+    "revision": "cea6be4265d07a2ef742dda700f7b51f9e5bb1f8",
     "path": "plugins/bundles/system-design-calculator.json"
   },
   "repository": "https://github.com/sobes-tech/plugin-sdk/tree/38b25d516b98dc8e39182cafd45c4774336309ca/plugins/system-design-calculator",

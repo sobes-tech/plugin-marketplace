@@ -238,8 +238,33 @@ export function validatePackageBytes(bytes: Uint8Array, entry: RecordValue): voi
   }
 
   const archive = new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+  const pkg: unknown = JSON.parse(archive);
 
-  if (canonical(JSON.parse(archive).manifest) !== canonical(entry.manifest)) {
+  object(pkg);
+  keys(pkg, ["manifest", "source", "ui"]);
+
+  if (canonical(pkg.manifest) !== canonical(entry.manifest)) {
     throw new Error(`Manifest mismatch: ${entry.id}`);
+  }
+
+  if (typeof pkg.source !== "string") {
+    throw new Error("Worker source must be JavaScript text");
+  }
+
+  // Compile only. Never invoke submitted code while validating a catalog.
+  new Function(pkg.source);
+
+  if (pkg.ui !== undefined) {
+    object(pkg.ui);
+    keys(pkg.ui, ["javascript", "css"]);
+
+    if (
+      typeof pkg.ui.javascript !== "string" ||
+      (pkg.ui.css !== undefined && typeof pkg.ui.css !== "string")
+    ) {
+      throw new Error("UI must contain JavaScript text and optional CSS text");
+    }
+
+    new Function(pkg.ui.javascript);
   }
 }
